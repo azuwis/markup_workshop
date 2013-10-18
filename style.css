@@ -578,47 +578,34 @@ div.abstract p.topic-title {
 
 div.admonition, div.attention, div.caution, div.danger, div.error,
 div.hint, div.important, div.note, div.tip, div.warning {
-  margin: 2em ;
-  border: medium outset ;
-  padding: 1em }
+  margin: 0.5em ;
+  border: solid 1px;
+  padding: 0.5em }
 
-div.note, div.warning {
-  margin:1.5em 0px;
-  border: none;
-}
 
 div.note p.admonition-title,
-div.warning p.admonition-title
-{
-  display:none;
-}
+div.warning p.admonition-title {
+  font-size:1em; }
+
+div.note p.admonition-title:before {
+  content:'\0270D'; /*handwriting*/
+  font-size: 1.5em;
+  margin-right: 0.2em; }
+
+div.warning p.admonition-title:before {
+  content:'\026A0'; /*warning*/
+  font-size: 1.5em;
+  margin-right: 0.2em; }
 
 /* Clearfix
  * http://css-tricks.com/snippets/css/clear-fix/
  */
 
-div.note:after,
-div.warning:after {
+div.note p.admonition-title:after,
+div.warning p.admonition-title:after {
   content:"";
   display:table;
-  clear:both;
-}
-
-div.note p:before,
-div.warning p:before {
-  display:block;
-  float:left;
-  font-size:4em;
-  line-height:1em;
-  margin-right:20px;
-  margin-left: 0em;
-  margin-top:-10px;
-  content:'\0270D'; /*handwriting*/
-}
-
-div.warning p:before {
-  content:'\026A0'; /*warning*/
-}
+  clear:both; }
 
 div.admonition p.admonition-title, div.hint p.admonition-title,
 div.important p.admonition-title, div.note p.admonition-title,
