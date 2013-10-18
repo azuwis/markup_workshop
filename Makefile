@@ -25,9 +25,9 @@ html: $(HTMLS)
 	$(RST2XETEX) $(RST2XETEXOPTS) $< $@
 
 .tex.pdf:
-	cp docutils.tex $(<D) || true
-	cd $(<D) && $(XELATEX) $(XELATEXOPTS) $(<F) || true
-	cd $(<D) && $(XELATEX) $(XELATEXOPTS) $(<F) || true
+	test -e $(<D)/docutils.tex || cp docutils.tex $(<D)
+	cd $(<D) && $(XELATEX) $(XELATEXOPTS) $(<F)
+	cd $(<D) && $(XELATEX) $(XELATEXOPTS) $(<F)
 
 .rst.html:
 	$(RST2HTML) $(RST2HTMLOPTS) $< $@
