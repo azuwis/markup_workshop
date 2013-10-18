@@ -3,3 +3,4 @@ from livereload.task import Task
 from livereload.compiler import shell
 
 Task.add('*.rst', shell('make html'))
+Task.add('*/*.rst', shell('make html'))
