@@ -15,9 +15,17 @@ OUTS=$(RSTS:.rst=.out)
 AUXS=$(RSTS:.rst=.aux)
 TOCS=$(RSTS:.rst=.toc)
 
+all: preview
+
 pdf: $(PDFS)
 
 html: $(HTMLS)
+
+preview: html
+	livereload -b
+
+clean:
+	rm -f $(TEXS) $(PDFS) $(LOGS) $(OUTS) $(AUXS) $(TOCS) $(HTMLS) $(wildcard **/docutils.tex) missfont.log $(wildcard **/missfont.log)
 
 .SUFFIXES: .rst .tex .pdf .html
 
@@ -31,9 +39,3 @@ html: $(HTMLS)
 
 .rst.html:
 	$(RST2HTML) $(RST2HTMLOPTS) $< $@
-
-preview: html
-	livereload -b
-
-clean:
-	rm -f $(TEXS) $(PDFS) $(LOGS) $(OUTS) $(AUXS) $(TOCS) $(HTMLS) $(wildcard **/docutils.tex) missfont.log $(wildcard **/missfont.log)
